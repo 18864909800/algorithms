@@ -1,5 +1,7 @@
+package 排序算法;
+
 /**
- * @ClassName Selection 选择排序
+ * @ClassName 排序算法.Selection 选择排序
  * @Description: TODO
  * @Author 949210597
  * @Date 2020/8/31
