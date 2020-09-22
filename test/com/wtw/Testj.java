@@ -1,9 +1,9 @@
 package com.wtw;
 
 import org.junit.jupiter.api.Test;
+import 排序算法.Shell;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName Testj
@@ -15,27 +15,24 @@ import java.util.List;
 public class Testj {
     @Test
     public void tt() {
-        int[] num = {1, 2, 3};
-        List<List<Integer>> subsets = subsets(num);
-        for (List<Integer> list : subsets
-        ) {
-            System.out.println(list);
+        Set<Integer> set = new HashSet<>();
+        set.add(4);
+        set.add(1);
+        set.add(3);
+        set.add(2);
+        Iterator<Integer> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            Integer next = iterator.next();
+            System.out.println(next);
         }
     }
 
-    public List<List<Integer>> subsets(int[] nums) {
-
-        List<List<Integer>> lists = new ArrayList<>();
-        lists.add(new ArrayList<>());
-        for (Integer num : nums) {
-            for (int i = 0, j = lists.size(); i < j; i++) {
-                List<Integer> list = new ArrayList<>(lists.get(i));
-                list.add(num);
-                lists.add(list);
-            }
-
-        }
-
-        return lists;
+    @Test
+    public void alg() {
+        int[] arr = {3, 5, 1, 2, 8, 6, 9, 7};
+        Shell.shellSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
+
+
 }
