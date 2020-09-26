@@ -2,6 +2,7 @@ package com.wtw;
 
 import org.junit.jupiter.api.Test;
 import 排序算法.Merge;
+import 排序算法.QuickSort;
 import 排序算法.Shell;
 
 import java.util.*;
@@ -30,9 +31,11 @@ public class Testj {
 
     @Test
     public void alg() {
-        int[] arr = {3, 5, 1, 2, 8, 6, 9, 7};
-        Merge.MergeSort(arr);
-        System.out.print(Arrays.toString(arr));
+         int[] arr = {3, 5, 1, 2, 8, 6, 9, 7};
+        // Merge.MergeSort(arr);
+        QuickSort.quickSort(arr,0,arr.length-1);
+         System.out.print(Arrays.toString(arr));
+
     }
 
 
