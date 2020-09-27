@@ -3,6 +3,7 @@ package com.wtw;
 import org.junit.jupiter.api.Test;
 import 排序算法.Merge;
 import 查找算法.BinarySearch;
+import 查找算法.InsertValueSearch;
 
 import java.util.*;
 
@@ -36,7 +37,7 @@ public class Testj {
         //Merge.merge(0,arr.length-1);
         // QuickSort.quickSort(arr,0,arr.length-1);
 
-        System.out.println(BinarySearch.binarySearch(arr2, 1));
+        System.out.println(InsertValueSearch.insertValueSearch(arr2,1,0,arr2.length-1));
         //System.out.print(Arrays.toString(arr));
 
     }
