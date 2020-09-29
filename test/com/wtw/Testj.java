@@ -2,6 +2,7 @@ package com.wtw;
 
 import org.junit.jupiter.api.Test;
 import tree.BFS;
+import tree.DFS;
 import tree.TreeNode;
 import 排序算法.Merge;
 import 查找算法.BinarySearch;
@@ -35,17 +36,20 @@ public class Testj {
     public void alg() {
         int[] arr = {3, 5, 1, 2, 8, 6, 9, 7};
         int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[][] arr3 = {{1, 2, 1}, {2, 3, 3}, {1, 3, 100}};
         String word = "word";
-        String abbr = "w1d";
+        String abbr = "w2d";
         // Merge.MergeSort(arr);
         //Merge.merge(0,arr.length-1);
         // QuickSort.quickSort(arr,0,arr.length-1);
 
         System.out.println(InsertValueSearch.insertValueSearch(arr2, 1, 0, arr2.length - 1));
         //System.out.print(Arrays.toString(arr));
+
         Vaild v = new Vaild();
-        v.valid(word,abbr);
-        System.out.println(v.valid(word,abbr));
+        v.valid(word, abbr);
+        // System.out.println(v.valid(word, abbr));
+
     }
 
     /**
@@ -82,13 +86,17 @@ public class Testj {
         treeNode7.left = treeNode11;
         treeNode7.right = treeNode12;
 
-        List<Integer> result = BFS.BFSByQueue(treeNode);
+        //List<Integer> result = BFS.BFSByQueue(treeNode);
+        List<Integer> result = DFS.dfs(treeNode);
 
         Iterator<Integer> iterator = result.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        // while (iterator.hasNext()) {
+        //     System.out.print(iterator.next() + " ");
+        // }
+        for (int i : result
+        ) {
+            System.out.println(i);
         }
-
     }
 
 
