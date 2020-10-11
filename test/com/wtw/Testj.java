@@ -88,7 +88,11 @@ public class Testj {
 
         //List<Integer> result = BFS.BFSByQueue(treeNode);
         List<Integer> result = DFS.dfs(treeNode);
-
+        List<Character> list = new ArrayList<>();
+        // for (char j : list
+        // ) {
+        //     System.out.println(j + "----------");
+        // }
         Iterator<Integer> iterator = result.iterator();
         // while (iterator.hasNext()) {
         //     System.out.print(iterator.next() + " ");
@@ -97,7 +101,13 @@ public class Testj {
         ) {
             System.out.println(i);
         }
+
     }
 
+    @Test
+    public void test4() {
+
+        System.out.println( Solution.isSubsequence("abc","adbc"));
+    }
 
 }

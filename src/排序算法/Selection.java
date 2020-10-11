@@ -15,26 +15,19 @@ public class Selection {
     }
 
     public static void selection(int[] array) {
-//        for (int i = 0; i < array.length; i++) {
-//            int minIndex = i;
-//            for (int j = i; j < array.length; j++) {
-//                if (array[j] < array[minIndex]) //找到最小的数
-//                    minIndex = j; //将最小数的索引保存
-//            }
-//            int temp = array[minIndex];
-//            array[minIndex] = array[i];
-//            array[i] = temp;
-//        }
-        for (int i = 0; i < array.length; i++) {
-            int max = i;
-            for (int j = i; j < array.length; j++) {
-                if (array[j] > array[max]) {
-                    max = j;
+        if (array.length==0) return;
+
+        for (int i = 0; i <array.length ; i++) {
+            int min=i;
+            for (int j = i; j <array.length ; j++) {
+                if(array[j]<array[min]){
+                    min=j;
                 }
+
             }
-            int temp = array[i];
-            array[i] = array[max];
-            array[max] = temp;
+            int temp = array[min];
+            array[min] = array[i];
+            array[i] = temp;
         }
         for (int i :
                 array) {

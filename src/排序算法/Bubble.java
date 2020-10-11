@@ -1,6 +1,7 @@
 package 排序算法;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @ClassName 排序算法.Bubble 冒泡排序
@@ -15,7 +16,8 @@ public class Bubble {
         long start = System.currentTimeMillis();
         bobble(array);
         long end = System.currentTimeMillis();
-        System.out.println("时间"+(end - start));
+        System.out.println("时间" + (end - start));
+
 
     }
 
@@ -32,16 +34,12 @@ public class Bubble {
                 }
             }
         }
-//        for (int i = 0; i < array.length; i++)
-//            for (int j = 0; j < array.length - 1 - i; j++)
-//                if (array[j + 1] < array[j]) {
-//                    int temp = array[j + 1];
-//                    array[j + 1] = array[j];
-//                    array[j] = temp;
-//                }
+
         for (int i : array) {
             System.out.println(i);
         }
         return array;
     }
+
+
 }

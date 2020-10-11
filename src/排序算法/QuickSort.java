@@ -13,6 +13,7 @@ public class QuickSort {
         if (low > high) {
             return;
         }
+
         temp = arr[low];
         i = low;
         j = high;

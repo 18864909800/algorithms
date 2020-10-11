@@ -1,5 +1,7 @@
 package 排序算法;
 
+import java.util.Arrays;
+
 /**
  * @ClassName 排序算法.Insertion 插入排序
  * @Description: TODO
@@ -11,20 +13,20 @@ public class Insertion {
     public static void main(String[] args) {
         int[] array = {3, 5, 7, 1, 8, 12, 9};
         insertionSort(array);
+        System.out.println(Arrays.toString(array));
     }
 
     public static int[] insertionSort(int[] array) {
         if (array.length == 0)
             return array;
-        int current;
-        for (int i = 0; i < array.length - 1; i++) {
-            current = array[i + 1];
-            int preIndex = i;
-            while (preIndex >= 0 && current < array[preIndex]) {
-                array[preIndex + 1] = array[preIndex];
-                preIndex--;
+        for (int i = 1; i <array.length ; i++) {
+            for (int j = i; j >0 ; j--) {
+                if (array[j]<array[j-1]){
+                    int temp=array[j];
+                    array[j]=array[j-1];
+                    array[j-1]=temp;
+                }
             }
-            array[preIndex + 1] = current;
         }
         return array;
     }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ClassName DFS
+ * @ClassName DFS 深度优先排序
  * @Description: TODO
  * @Author 949210597
  * @Date 2020/9/29
@@ -18,7 +18,6 @@ public class DFS {
             return null;
         }
 
-
         list.add(root.val);
         if (root.left != null) {
             dfs(root.left);
@@ -28,5 +27,7 @@ public class DFS {
         }
         return list;
     }
+
+
 
 }
