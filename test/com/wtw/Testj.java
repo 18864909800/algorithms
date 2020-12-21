@@ -1,5 +1,7 @@
 package com.wtw;
 
+import LinkList.ListNode;
+import LinkList.Solution;
 import org.junit.jupiter.api.Test;
 import tree.BFS;
 import tree.DFS;
@@ -9,6 +11,7 @@ import 查找算法.BinarySearch;
 import 查找算法.InsertValueSearch;
 
 import java.util.*;
+
 
 /**
  * @ClassName Testj
@@ -30,6 +33,7 @@ public class Testj {
             Integer next = iterator.next();
             System.out.println(next);
         }
+        System.out.println(2 << 3);
     }
 
     @Test
@@ -106,8 +110,87 @@ public class Testj {
 
     @Test
     public void test4() {
-
-        System.out.println( Solution.isSubsequence("abc","adbc"));
+        System.out.printf("%d%d/n", 1, 2);
     }
+
+    @Test
+    public void test5() {
+        char[] data = {'a', 'b', 'c'};
+        int l = data.length;
+        for (int i = 0; i < l / 2; i++) {
+            char temp;
+            temp = data[i];
+            data[i] = data[l - i - 1];
+            data[l - i - 1] = temp;
+        }
+        System.out.println(Arrays.toString(data));
+    }
+
+    @Test
+    public void t() {
+        int[] bills = {5, 5, 5, 10, 5, 5, 10, 20, 20, 20};
+        System.out.println(lemonadeChange(bills));
+    }
+
+    @Test
+    public boolean lemonadeChange(int[] bills) {
+        int[] money = new int[2];
+        int l = bills.length;
+        for (int i = 0; i < l; i++) {
+            if (bills[i] == 5) {
+                money[0]++;
+            } else if (bills[i] == 10) {
+                if (money[0] == 0) {
+                    return false;
+                } else {
+                    money[0]--;
+                    money[1]++;
+                }
+            } else if (bills[i] == 20) {
+                if (money[0] == 0) {
+                    return false;
+                } else if (money[1] != 0 & money[0] != 0) {
+                    money[1]--;
+                    money[0]--;
+                } else if (money[1] == 0 & money[0] >= 3) {
+                    money[0] -= 3;
+                } else if (money[0] < 3 && money[1] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Test
+    public void test6() {
+        boolean s = true;
+        String s1 = "ab";
+        String[] words = {"ad", "bd", "aaab", "baa", "badab"};
+        int i = countConsistentStrings(s1, words);
+        System.out.println(i);
+    }
+
+    public int countConsistentStrings(String allowed, String[] words) {
+        int ans = solve(allowed);
+        int total = 0;
+        for (String word : words) {
+            int res = solve(word);
+            if ((res & ans) == res) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int solve(String s) {
+        int ans = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int x = s.charAt(i) - 'a';
+            ans |= (1 << x);
+        }
+        return ans;
+    }
+
 
 }

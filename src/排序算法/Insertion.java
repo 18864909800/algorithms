@@ -11,7 +11,7 @@ import java.util.Arrays;
  **/
 public class Insertion {
     public static void main(String[] args) {
-        int[] array = {3, 5, 7, 1, 8, 12, 9};
+        int[] array = {6,5,3, 5, 7, 1, 8, 12, 9,11,11};
         insertionSort(array);
         System.out.println(Arrays.toString(array));
     }
