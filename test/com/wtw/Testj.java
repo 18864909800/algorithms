@@ -34,6 +34,7 @@ public class Testj {
             System.out.println(next);
         }
         System.out.println(2 << 3);
+        List<Integer> list = new ArrayList<>();
     }
 
     @Test
@@ -164,33 +165,73 @@ public class Testj {
 
     @Test
     public void test6() {
-        boolean s = true;
-        String s1 = "ab";
-        String[] words = {"ad", "bd", "aaab", "baa", "badab"};
-        int i = countConsistentStrings(s1, words);
-        System.out.println(i);
+        String s = countAndSay(5);
+        System.out.println(s);
     }
 
-    public int countConsistentStrings(String allowed, String[] words) {
-        int ans = solve(allowed);
-        int total = 0;
-        for (String word : words) {
-            int res = solve(word);
-            if ((res & ans) == res) {
-                total++;
+    public String countAndSay(int n) {
+        String[] res = new String[n];
+        res[0] = "1";
+        for (int i = 1; i < n; i++) {
+            int ch = 0;
+            int count = 0;
+            StringBuffer sb = new StringBuffer();
+            for (int j = 0; j < res[i - 1].length(); j++) {
+                if (res[i - 1].charAt(j) - '0' != ch) {
+                    if (j != 0) {
+                        sb.append(count + "" + ch);
+                    }
+                    ch = res[i - 1].charAt(j) - '0';
+                    count = 1;
+                } else {
+                    count++;
+                }
+            }
+            sb.append(count + "" + ch);
+            res[i] = sb.toString();
+        }
+        return res[n - 1];
+    }
+
+
+    @Test
+    public ArrayList<Integer> solve(int[][] matrix) {
+        ArrayList<Integer> list=new ArrayList<>();
+        if(matrix.length==0) return list;
+        int x=matrix[0].length;
+        int y=matrix.length;
+        for (int i = 0; i <y ; i++) {
+            if(i%2==0){
+                for (int j = 0; j <x ; j++) {
+                    list.add(matrix[j][i]);
+                }
+            }else {
+                for (int j = x-1; j >=0 ; j--) {
+                    list.add(matrix[j][i]);
+                }
             }
         }
-        return total;
+        return list;
     }
 
-    public int solve(String s) {
-        int ans = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int x = s.charAt(i) - 'a';
-            ans |= (1 << x);
+    public boolean Find(int target, int [][] array) {
+        String s="2131231";
+        char[] res=s.toCharArray();
+
+        if (array==null) return false;
+        int length=array[0].length;
+        int high=array.length;
+        int i=length-1;
+        int j=0;
+        while (i>=0&&j<high){
+            if(target==array[j][i]) return true;
+            if(target>array[j][i]) i--;
+            if(target<array[j][i]) j++;
         }
-        return ans;
+        return false;
     }
 
 
 }
+
+
