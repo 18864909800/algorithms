@@ -10,6 +10,7 @@ import 排序算法.Merge;
 import 查找算法.BinarySearch;
 import 查找算法.InsertValueSearch;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 
@@ -196,17 +197,17 @@ public class Testj {
 
     @Test
     public ArrayList<Integer> solve(int[][] matrix) {
-        ArrayList<Integer> list=new ArrayList<>();
-        if(matrix.length==0) return list;
-        int x=matrix[0].length;
-        int y=matrix.length;
-        for (int i = 0; i <y ; i++) {
-            if(i%2==0){
-                for (int j = 0; j <x ; j++) {
+        ArrayList<Integer> list = new ArrayList<>();
+        if (matrix.length == 0) return list;
+        int x = matrix[0].length;
+        int y = matrix.length;
+        for (int i = 0; i < y; i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < x; j++) {
                     list.add(matrix[j][i]);
                 }
-            }else {
-                for (int j = x-1; j >=0 ; j--) {
+            } else {
+                for (int j = x - 1; j >= 0; j--) {
                     list.add(matrix[j][i]);
                 }
             }
@@ -214,21 +215,119 @@ public class Testj {
         return list;
     }
 
-    public boolean Find(int target, int [][] array) {
-        String s="2131231";
-        char[] res=s.toCharArray();
+    public boolean Find(int target, int[][] array) {
+        String s = "2131231";
+        char[] res = s.toCharArray();
 
-        if (array==null) return false;
-        int length=array[0].length;
-        int high=array.length;
-        int i=length-1;
-        int j=0;
-        while (i>=0&&j<high){
-            if(target==array[j][i]) return true;
-            if(target>array[j][i]) i--;
-            if(target<array[j][i]) j++;
+        if (array == null) return false;
+        int length = array[0].length;
+        int high = array.length;
+        int i = length - 1;
+        int j = 0;
+        while (i >= 0 && j < high) {
+            if (target == array[j][i]) return true;
+            if (target > array[j][i]) i--;
+            if (target < array[j][i]) j++;
         }
         return false;
+    }
+
+    @Test
+    public void ss() {
+        Scanner sc = new Scanner(System.in);
+        String[] s1 = sc.nextLine().split(",");
+        String s = sc.nextLine();
+        int cs = Integer.parseInt(s);
+        int[] res = new int[s1.length];
+        int low = 0;
+        int high = s1.length;
+        int index = -1;
+        while (low <= high) {
+            int middle = (low + high) / 2;
+            if (cs == res[middle]) {
+                index = middle;
+                break;
+            }
+            if (cs > res[middle]) {
+                low = middle + 1;
+            }
+            if (cs < res[middle]) {
+                high = middle - 1;
+            }
+        }
+
+        if (index == -1) {
+            for (int i = 0; i < s1.length - 1; i++) {
+                if (res[i] < cs && res[i + 1] > cs) {
+                    index = i + 1;
+                    break;
+                }
+            }
+        }
+        System.out.println(index);
+    }
+
+    static int ss;
+    public static void main(String[] args) {
+        String format = new DecimalFormat("0.00").format(100.23);
+        System.out.println(format);
+        System.out.println(ss);
+    }
+
+
+    public String replaceSpace(String s) {
+        char[] chars = s.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ' ') {
+                sb.append("%20");
+            } else {
+                sb.append(chars[i]);
+            }
+
+        }
+        return sb.toString();
+    }
+
+    public void te5() {
+        Stack<String> stack = new Stack<>();
+        LinkedList<String> list = new LinkedList<>();
+
+    }
+
+    public boolean IsPopOrder(int[] pushA, int[] popA) {
+        if (pushA.length == 0 || popA.length == 0) return false;
+        Stack<Integer> stack = new Stack<>();
+        int index = 0;
+        for (int i = 0; i < pushA.length; i++) {
+            stack.push(pushA[i]);
+            if (!stack.isEmpty() && stack.peek() == popA[index]) {
+                stack.pop();
+                index++;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+        if (root == null) return null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode treeNode = queue.poll();
+            list.add(treeNode.val);
+
+            if (treeNode.left != null) {
+                queue.add(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                queue.add(treeNode.right);
+            }
+
+
+        }
+        return list;
     }
 
 

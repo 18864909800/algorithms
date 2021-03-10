@@ -13,11 +13,9 @@ public class Queen {
     int[] array = new int[max];
     static int count=0;
     public static void main(String[] args) {
-        long start=System.currentTimeMillis();
         Queen queen = new Queen();
         queen.check(0);
-        long end=System.currentTimeMillis();
-        System.out.println(count+" "+(end-start));
+        System.out.println(count);
     }
 
     private void check(int n) {
